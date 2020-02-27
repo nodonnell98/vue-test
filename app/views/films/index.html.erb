@@ -1,3 +1,4 @@
-<%= @films.each do |f| %>
-    <p><%= f.name %></p>
-<% end %> 
+<%= films = @films.to_json(only: [:name, :year]) %>
+<div id='filmData' data='<%= films %>'></div>
+
+<%= javascript_pack_tag 'films'%>

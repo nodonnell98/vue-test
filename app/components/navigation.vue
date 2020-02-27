@@ -1,6 +1,6 @@
 <template>
   <div class='navigation-bar'>
-    <a v-for="link in links" :key="link" class='navigation-item' :href=link.path>
+    <a v-for="link in links" :key="link.id" class='navigation-item' :href=link.path>
       {{link.text}}
     </a>
   </div>
@@ -13,15 +13,18 @@
         links: {
           home: {
             path: '/',
-            text: 'Home'
+            text: 'Home',
+            id: 1
           },
           spreadsheet: {
             path: '/spreadsheet',
-            text: 'Demo Spreadsheet'
+            text: 'Demo Spreadsheet',
+            id: 2
           },
           films: {
             path: '/films',
-            text: 'Films'
+            text: 'Films',
+            id: 3
           }
         }
       }

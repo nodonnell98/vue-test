@@ -1,7 +1,7 @@
 <template>
   <div>
     <vue-table
-      :tbody-data="products"
+      :tbody-data="films"
       :headers="headers"
       :custom-options="customOptions"
       :style-wrap-vue-table="styleWrapVueTable"
@@ -115,54 +115,7 @@ export default {
           },
         },
       ],
-      products: [
-        {
-          name: {
-            type: 'input',
-            value: 'Spirited Away',
-            active: false,
-          },
-          year: {
-            type: 'select',
-            handleSearch: true,
-            selectOptions: [
-              {
-                value: '2001',
-                label: '2001',
-              },
-              {
-                value: '1988',
-                label: '1988',
-              },
-            ],
-            value: '2001',
-            active: false,
-          },
-        },
-        {
-          name: {
-            type: 'input',
-            value: 'My Neighbour Totoro',
-            active: false,
-          },
-          year: {
-            type: 'select',
-            handleSearch: true,
-            selectOptions: [
-              {
-                value: '2001',
-                label: '2001',
-              },
-              {
-                value: '1988',
-                label: '1988',
-              },
-            ],
-            value: '1988',
-            active: false,
-          },
-        },
-      ],
+      films: ['name', 'year']
     };
   },
   components: {
@@ -179,25 +132,6 @@ export default {
       console.log(header.headerName);
     },
     changeData(row, header) {
-      
-      // $.post("/admin/comparison_data/set_data", {
-      //   data : parseNationalData(),
-      //   stored_as_percentages: parseStoreAsPercentagesData(),
-      //   set: $(".table-container").data("comparison"),
-      //   group: $(".table-container").data("group"),
-      //   academic_year: $(".table-container").data("year"),
-      //   total_fields: parseTotalFieldsData(),
-      //   benchmark: $(".nationalResults_benchmark_breakdown").length > 0
-      // })
-      //   .success (data) {
-      //     console.log("saved")
-      //     window.location = data.url
-      //    }
-      //   .error {
-      //     console.log("error")
-      //     hideLoader();
-      //    }
-      // e.preventDefault()
     },
   },
 };
