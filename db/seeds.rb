@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(0..9).each do |i|
+  f = Film.create(name: "Film-#{i}", year: "199#{i}")
+  puts f.inspect
+end
