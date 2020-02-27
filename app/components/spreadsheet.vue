@@ -12,14 +12,15 @@
       :select-position="selectPosition"
       :submenu-tbody="submenuTbody"
       :submenu-thead="submenuThead"
-      v-on:thead-td-sort="sortProduct">
+      v-on:thead-td-sort="sortProduct"
+      @tbody-change-data="changeData">
 
-      <div slot='header'>
-        Ghibli Movies
+      <div id='app' slot='header'>
+        <h1>Ghibli Movies</h1>
       </div>
 
       <div slot='loader'>
-        Loading
+        <h1>Loading</h1>
       </div>
     </vue-table>
   </div>
@@ -93,7 +94,7 @@ export default {
         positionTop: 0,
       },
       selectPosition: {
-        top: 0,
+        top: 175,
         left: 0,
       },
       disableSortThead: ['a'],
@@ -188,6 +189,27 @@ export default {
   methods: {
     sortProduct(event, header, colIndex) {
       console.log(header.headerName);
+    },
+    changeData(row, header) {
+      
+      // $.post("/admin/comparison_data/set_data", {
+      //   data : parseNationalData(),
+      //   stored_as_percentages: parseStoreAsPercentagesData(),
+      //   set: $(".table-container").data("comparison"),
+      //   group: $(".table-container").data("group"),
+      //   academic_year: $(".table-container").data("year"),
+      //   total_fields: parseTotalFieldsData(),
+      //   benchmark: $(".nationalResults_benchmark_breakdown").length > 0
+      // })
+      //   .success (data) {
+      //     console.log("saved")
+      //     window.location = data.url
+      //    }
+      //   .error {
+      //     console.log("error")
+      //     hideLoader();
+      //    }
+      // e.preventDefault()
     },
   },
 };
