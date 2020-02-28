@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <ul id="films" v-if="films">
-      <li v-for="film in films" :key="film.id">
-        {{ film.name }} - {{ film.year }}
-      </li>
-    </ul>
-  </div>
+  <ul id="films" v-if="films">
+    <li v-for="film in films" :key="film.id">
+      {{ film.name }} - {{ film.year }}
+    </li>
+  </ul>
 </template>
 
 <script>
