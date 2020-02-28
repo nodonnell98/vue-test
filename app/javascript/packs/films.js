@@ -8,15 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Next we want to grab and parse the json from 
   // the mounting element's data attribute
-  const films = JSON.parse(element.getAttribute('data'))
+  // const data = JSON.parse(element.getAttribute('data'))
+  const data = { films: 1 }
 
   // Here we are creating conditional that won't build the instance
   // UNLESS the element is present, and films is present
-  if (element != null && films != null) {
-    new Vue({
+  if (element != null && data != null) {
+    const v = new Vue({
       el: '#filmData',
+      data: data,
       // except we are passing the films like so in the render
-      render: h => h(App, { films }),
+      render: h => h(App),
     });
   }
 });
