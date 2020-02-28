@@ -202,7 +202,7 @@ export default {
   },
 };
 </script>
- 
+
 <style lang='scss'>
 ::-moz-selection {
   color: #2c3e50;

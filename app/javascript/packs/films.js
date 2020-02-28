@@ -1,9 +1,15 @@
 import Vue from 'vue'
-import App from '../../components/films-table.vue'
+import List from '../../components/films-list.vue'
+import Table from '../../components/films-table.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
-    el: '#filmData',
-    render: h => h(App),
+    el: '#filmList',
+    render: h => h(List),
+  });
+
+  new Vue({
+    el: '#filmTable',
+    render: h => h(Table)
   });
 });
