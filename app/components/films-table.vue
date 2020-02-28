@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <ul id="films" v-if="films.data.films">
-      <li v-for="film in films.data.films" :key="film.id">
+    <ul id="films" v-if="films">
+      <li v-for="film in films" :key="film.id">
         {{ film.name }} - {{ film.year }}
       </li>
     </ul>
@@ -20,7 +20,7 @@
     created () {
       axios
         .get('/films.json')
-        .then(response => (this.films = response))
+        .then(response => (this.films = response.data))
     }
   }
 </script>

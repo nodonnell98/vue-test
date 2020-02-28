@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.films @films
+json.array! @films, :id, :name, :year
