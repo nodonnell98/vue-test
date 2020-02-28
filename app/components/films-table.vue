@@ -11,9 +11,10 @@
       :parent-scroll-element="parentScrollElement"
       :select-position="selectPosition"
       :submenu-tbody="submenuTbody"
-      :submenu-thead="submenuThead">
+      :submenu-thead="submenuThead"
+      v-on:tbody-change-data="dataChanged">
 
-      <div id='app' slot='header'>
+      <div slot='header'>
         <h1>Ghibli Films</h1>
       </div>
 
@@ -26,7 +27,7 @@
  
 <script>
   import VueTable from 'vuejs-spreadsheet';
-  import axios from 'axios'
+  import axios from 'axios-on-rails';
   
   export default {
     name: 'app',
@@ -39,7 +40,7 @@
             lang: 'en',
             en: {
               select: {
-                placeholder: 'Search by typing',
+                placeholder: 'Search...',
               },
             },
           },
@@ -88,6 +89,15 @@
       getHeaders() {
         return [
           {
+            headerName: 'ID',
+            headerKey: 'id',
+            style: {
+              width: '100px',
+              minWidth: '100px',
+              color: '#000',
+            },
+          },
+          {
             headerName: 'Name',
             headerKey: 'name',
             style: {
@@ -110,6 +120,13 @@
       columnifyData(cols) {
         const tableData = []
         cols.forEach(item => {
+          const id = {
+            type: 'input',
+            value: item.id,
+            active: false,
+            disabled: true
+          };
+
           const name = {
             type: 'input',
             value: item.name,
@@ -119,12 +136,12 @@
           const year = {
             type: 'select',
             handleSearch: true,
-            selectOptions: this.getSelectOptions(),
+            selectOptions: [],
             value: item.year,
             active: false
           };
 
-          tableData.push({ name, year });
+          tableData.push({ id, name, year });
         });
 
         return tableData;
@@ -172,7 +189,24 @@
             label: '1999',
           },
         ];
-      }
+      },
+      dataChanged(row, header) {
+        const film = this.films[row];
+        console.log(film.name.value);
+
+        axios
+          .put('/films/' + film.id.value,
+          {
+            film: {
+              id: film.id.value,
+              name: film.name.value,
+              year: film.year.value
+            }
+          })
+          .then(function(response) {
+            console.log(response);
+          });
+      },
     },
   };
 </script>

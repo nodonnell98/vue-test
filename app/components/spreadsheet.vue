@@ -179,25 +179,6 @@ export default {
       console.log(header.headerName);
     },
     changeData(row, header) {
-      
-      // $.post("/admin/comparison_data/set_data", {
-      //   data : parseNationalData(),
-      //   stored_as_percentages: parseStoreAsPercentagesData(),
-      //   set: $(".table-container").data("comparison"),
-      //   group: $(".table-container").data("group"),
-      //   academic_year: $(".table-container").data("year"),
-      //   total_fields: parseTotalFieldsData(),
-      //   benchmark: $(".nationalResults_benchmark_breakdown").length > 0
-      // })
-      //   .success (data) {
-      //     console.log("saved")
-      //     window.location = data.url
-      //    }
-      //   .error {
-      //     console.log("error")
-      //     hideLoader();
-      //    }
-      // e.preventDefault()
     },
   },
 };
