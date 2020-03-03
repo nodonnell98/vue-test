@@ -192,7 +192,6 @@
       },
       dataChanged(row, header) {
         const film = this.films[row];
-        console.log(film.name.value);
 
         axios
           .put('/films/' + film.id.value,
@@ -204,7 +203,9 @@
             }
           })
           .then(function(response) {
-            console.log(response);
+            axios
+              .get('/films.json')
+              .then(response => (this.films = this.columnifyData(response.data)))
           });
       },
     },

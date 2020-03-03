@@ -5,7 +5,7 @@ class FilmsController < ApplicationController
   before_action :fetch_film, except: :index
 
   def index
-    @films = Film.all
+    @films = Film.all.order(:id)
   end
 
   def update
@@ -19,6 +19,6 @@ class FilmsController < ApplicationController
   end
 
   def film_params
-    params.permit(:id, :name, :year)
+    params.require(:film).permit(:id, :name, :year)
   end
 end

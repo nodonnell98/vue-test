@@ -176,7 +176,6 @@ export default {
   },
   methods: {
     sortProduct(event, header, colIndex) {
-      console.log(header.headerName);
     },
     changeData(row, header) {
     },
