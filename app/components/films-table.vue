@@ -33,40 +33,63 @@
     name: 'app',
     data() {
       return {
-        customOptions: {
-          tbodyIndex: true,
-          sortHeader: true,
-          trad: {
-            lang: 'en',
-            en: {
-              select: {
-                placeholder: 'Search...',
-              },
+      customOptions: {
+        tbodyIndex: true,
+        sortHeader: true,
+        trad: {
+          lang: 'en',
+          en: {
+            select: {
+              placeholder: 'Search by typing',
             },
+          }
+        },
+        newData: {
+          type: 'input',
+          value: '',
+          active: false,
+          style: {
+            color: '#000',
           },
         },
-        submenuTbody: [],
-        submenuThead: [],
-        disableCells: [],
-        loading: false,
-        parentScrollElement: {
-          attribute: 'html',
-          positionTop: 0,
+        fuseOptions: {
+          shouldSort: true,
+          threshold: 0.2,
+          location: 0,
+          distance: 30,
+          maxPatternLength: 64,
+          minMatchCharLength: 1,
+          findAllMatches: false,
+          tokenize: false,
+          keys: [
+            'value',
+          ],
         },
-        selectPosition: {
-          top: 175,
-          left: 0,
+      },
+      submenuTbody: [
+      ],
+      submenuThead: [
+      ],
+      disableCells: ['a'],
+      loading: false,
+      parentScrollElement: {
+        attribute: 'html',
+        positionTop: 0,
+      },
+      selectPosition: {
+        top: 0,
+        left: 0,
+      },
+      disableSortThead: ['a'],
+      styleWrapVueTable: {
+        fontSize: '12px',
+        comment: {
+          borderColor: '#696969',
+          borderSize: '8px',
+          widthBox: '120px',
+          heightBox: '80px',
         },
-        disableSortThead: [],
-        styleWrapVueTable: {
-          fontSize: '12px',
-          comment: {
-            borderColor: '#696969',
-            borderSize: '8px',
-            widthBox: '120px',
-            heightBox: '80px',
-          },
-        },
+      },
         headers: this.getHeaders(),
         films: [],
       };
@@ -136,7 +159,7 @@
           const year = {
             type: 'select',
             handleSearch: true,
-            selectOptions: [],
+            selectOptions: this.getSelectOptions(),
             value: item.year,
             active: false
           };
