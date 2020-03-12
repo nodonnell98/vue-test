@@ -16,14 +16,14 @@
             text: 'Home',
             id: 1
           },
-          spreadsheet: {
+          demo_spreadsheet: {
             path: '/spreadsheet',
-            text: 'Demo Spreadsheet',
+            text: 'Vue-Spreadsheet Demo',
             id: 2
           },
-          films: {
+          films_spreadsheet: {
             path: '/films',
-            text: 'Films',
+            text: 'Vue-Spreadsheet with Films',
             id: 3
           }
         }

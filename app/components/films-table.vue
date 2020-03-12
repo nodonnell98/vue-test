@@ -14,10 +14,6 @@
       :submenu-thead="submenuThead"
       v-on:tbody-change-data="dataChanged">
 
-      <div slot='header'>
-        <h1>Ghibli Films</h1>
-      </div>
-
       <div slot='loader'>
         <h1>Loading</h1>
       </div>
