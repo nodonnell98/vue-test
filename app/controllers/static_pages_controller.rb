@@ -1,7 +1,7 @@
-class StaticPagesController < ApplicationController
-  def landing
-  end
+# frozen_string_literal: true
 
-  def spreadsheet
-  end
+class StaticPagesController < ApplicationController
+  def landing; end
+
+  def spreadsheet; end
 end

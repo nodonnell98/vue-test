@@ -1,10 +1,7 @@
 <template>
   <div class='navigation-bar'>
-    <a class='navigation-item' href='/'>
-      {{ home_text }}
-    </a>
-    <a class='navigation-item' href='spreadsheet'>
-      {{ spreadsheet_text }}
+    <a v-for="link in links" :key="link.id" class='navigation-item' :href=link.path>
+      {{link.text}}
     </a>
   </div>
 </template>
@@ -13,8 +10,23 @@
   export default {
     data: function () {
       return {
-        home_text: "Home",
-        spreadsheet_text: "Spreadsheet"
+        links: {
+          home: {
+            path: '/',
+            text: 'Home',
+            id: 1
+          },
+          spreadsheet: {
+            path: '/spreadsheet',
+            text: 'Demo Spreadsheet',
+            id: 2
+          },
+          films: {
+            path: '/films',
+            text: 'Films',
+            id: 3
+          }
+        }
       }
     }
   }

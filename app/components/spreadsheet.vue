@@ -12,14 +12,15 @@
       :select-position="selectPosition"
       :submenu-tbody="submenuTbody"
       :submenu-thead="submenuThead"
-      v-on:thead-td-sort="sortProduct">
+      v-on:thead-td-sort="sortProduct"
+      @tbody-change-data="changeData">
 
-      <div slot='header'>
-        Ghibli Movies
+      <div id='app' slot='header'>
+        <h1>Ghibli Movies</h1>
       </div>
 
       <div slot='loader'>
-        Loading
+        <h1>Loading</h1>
       </div>
     </vue-table>
   </div>
@@ -71,18 +72,6 @@ export default {
         },
       },
       submenuTbody: [
-        {
-          type: 'button',
-          value: 'change color',
-          function: 'change-color',
-          disabled: ['img'],
-        },
-        {
-          type: 'button',
-          value: 'change value',
-          function: 'change-value',
-          disabled: ['img', 'name'],
-        },
       ],
       submenuThead: [
       ],
@@ -93,7 +82,7 @@ export default {
         positionTop: 0,
       },
       selectPosition: {
-        top: 0,
+        top: 175,
         left: 0,
       },
       disableSortThead: ['a'],
@@ -187,12 +176,13 @@ export default {
   },
   methods: {
     sortProduct(event, header, colIndex) {
-      console.log(header.headerName);
+    },
+    changeData(row, header) {
     },
   },
 };
 </script>
- 
+
 <style lang='scss'>
 ::-moz-selection {
   color: #2c3e50;
