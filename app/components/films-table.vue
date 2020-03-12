@@ -216,7 +216,6 @@
           .put('/films/' + film.id.value,
           {
             film: {
-              id: film.id.value,
               name: film.name.value,
               year: film.year.value
             }

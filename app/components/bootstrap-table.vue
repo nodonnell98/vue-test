@@ -1,14 +1,14 @@
 <template>
   <div>
     <b-table striped hover
-      :items="items"
-      :fields="fields"
+      :items='items'
+      :fields='fields'
       >
-      <template v-slot:cell(name)="row">
-        <b-form-input v-model="row.item.name"/>
+      <template v-slot:cell(name)='row'>
+        <b-form-input v-model='row.item.name' v-on:change.native="dataChanged"/>
       </template>
-      <template v-slot:cell(year)="row">
-        <b-form-input v-model="row.item.year"/>
+      <template v-slot:cell(year)='row'>
+        <b-form-input v-model='row.item.year' v-on:change.native="dataChanged"/>
       </template>
     </b-table>
   </div>
@@ -20,7 +20,7 @@
   export default {
     data() {
       return {
-        fields: [{ ID: 'id', Name: "name", Year: "year" }],
+        fields: [{ ID: 'id', Name: 'name', Year: 'year' }],
         items: []
       };
     },
@@ -29,34 +29,19 @@
         .get('/films.json')
         .then(response => (this.items = response.data))
     },
-    watch: {
-      items: {
-        deep: true,
-        handler (oldItems, newItems) {
-          this.dataChanged(1);
-        }
-      }
-    },
     methods: {
-      dataChanged(row, header) {
-        console.log('HERE');
-        const film = this.items[row];
-        console.log(film)
+      dataChanged(e) {
+        let row = e.target.closest('tr')
+        let film = this.items[row.rowIndex - 1]
 
         axios
-          .put('/films/' + film.id.value,
+          .put('/films/' + film.id,
           {
             film: {
-              id: film.id.value,
-              name: film.name.value,
-              year: film.year.value
+              name: row.children[1].children[0]._value,
+              year: row.children[2].children[0]._value
             }
           })
-          .then(function(response) {
-            axios
-              .get('/films.json')
-              .then(response => (this.items = response.data))
-          });
       },
     }
   };

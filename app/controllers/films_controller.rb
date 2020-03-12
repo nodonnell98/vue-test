@@ -15,7 +15,7 @@ class FilmsController < ApplicationController
   private
 
   def fetch_film
-    @film = Film.find(film_params[:id])
+    @film = Film.find(params[:id])
   end
 
   def film_params
